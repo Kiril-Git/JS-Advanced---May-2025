@@ -4,7 +4,7 @@ function nestedArrIter(inputArr) {
     let counter = 0;
 
     for (let i = 0; i < inputArr.length -1; i++) {
-        for (let j = 0; j < inputArr.length; j++) {
+        for (let j = 0; j < inputArr[i].length; j++) {
 
             let temp = inputArr[i][j];
             let temp2 = inputArr[i +1][j];
