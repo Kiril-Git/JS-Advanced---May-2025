@@ -5,7 +5,7 @@ function nestedArrIter(inputArr) {
     let rightSum = 0;
 
     for (let i = 0; i < inputArr.length; i++) {
-        for (let j = i; j < inputArr.length; j++) {
+        for (let j = i; j < inputArr[i].length; j++) {
 
             let temp = inputArr[i][j];
             leftSum += temp;
@@ -15,7 +15,7 @@ function nestedArrIter(inputArr) {
 
 
     for (let i = 0; i < inputArr.length; i++) {
-        for (let j = inputArr.length -1 -i; j >= 0; j--) {
+        for (let j = inputArr[i].length -1 -i; j >= 0; j--) {
 
             let temp = inputArr[i][j];
             rightSum += temp;
