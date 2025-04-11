@@ -20,3 +20,13 @@ function numsOrbit(inputArr)
 
 
 numsOrbit([5, 5, 0, 0])
+
+
+
+// output:             1 2 3 4 5
+//                     2 2 3 4 5
+//                     3 3 3 4 5
+//                     4 4 4 4 5
+//                     5 5 5 5 5
+
+//
