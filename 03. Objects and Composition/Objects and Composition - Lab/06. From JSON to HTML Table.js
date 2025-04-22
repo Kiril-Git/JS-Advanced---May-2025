@@ -1,48 +1,29 @@
 function fromJSONToHTMLTable(json) {
+    let data = JSON.parse(json);
+    let result = ['<table>'];
 
-    let arr = JSON.parse(json);
+    // headers
+    let headers = Object.keys(data[0]);
+    result.push('<tr>' + headers.map(h => `<th>${escapeHTML(h)}</th>`).join('') + '</tr>');
 
-    let outputArr = ["<table>"];
-    outputArr.push(makeKeyRow(arr));
-    arr.forEach(obj => outputArr.push(makeValueRow(obj)));
-    outputArr.push("</table>");
-
-    console.log(outputArr.join('\n'));
-
-
-    function makeKeyRow(arr) {
-        let result = '';
-        if (arr.length < 3) {
-            let [name, score] = Object.keys(arr[0]);
-            result = `  <tr><th>${name}</th><th>${score}</th></tr>`;
-        } else {
-            let [name, score, grade] = Object.keys(arr[0]);
-            result = `  <tr><th>${name}</th><th>${score}</th><th>${grade}</th></tr>`;
-        }
-        return result;
-    }
-    function makeValueRow(obj) {
-        let result = '';
-        let values = Object.values(obj);
-        if (arr.length < 3) {
-            let [name, score] = [...values];
-            result = `<tr><td>${name}</td><td>${score}</td></tr>`;
-        } else {
-            let [name, score, grade] = [...values]
-            result = `<tr><td>${name}</td><td>${score}</td><td>${grade}</td></tr>`;
-        }
-
-        return result;
+    // rows
+    for (let obj of data) {
+        let row = headers.map(h => `<td>${escapeHTML(String(obj[h]))}</td>`).join('');
+        result.push('<tr>' + row + '</tr>');
     }
 
-    function escapeHtml(value) {
+    result.push('</table>');
+    console.log(result.join('\n'));
+
+    function escapeHTML(value) {
         return value
-            .replace(/&/g, "&amp;")
-            .replace(/</g, "&lt;")
-            .replace(/>/g, "&gt;")
-            .replace(/"/g, "&quot;")
-            .replace(/'/g, "&#039;");
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/ /g, '&nbsp;');
     }
 }
+
 
 fromJSONToHTMLTable(`[{"Name":"Stamat","Score":5.5},{"Name":"Rumen","Score":6}]`);
