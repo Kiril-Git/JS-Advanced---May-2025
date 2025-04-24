@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Target HTML Elements</title>
+</head>
+<body>
+    <h1 class="heading">Hello World!</h1>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut, quia.</p>
+
+    <h3 class="heading">Shopping List:</h3>
+
+<ul class="shopping-list">
+    <li>Bread</li>
+    <li>Eggs</li>
+    <li>Candy</li>
+    <li id="favourite-food">Fruit</li>
+</ul>
+
+<script>
+    let favouriteFood = document.getElementById('favourite-food');
+    console.log(favouriteFood.textContent);
+    setTimeout(() => {
+        favouriteFood.textContent = 'Beef';
+    }, 3000);
+
+    let liElements = document.getElementsByTagName('li')
+    console.log(liElements);
+
+    let headElements = document.getElementsByTagName('h1')
+    console.log(headElements[0]);
+
+    let shoppingListElements = document.querySelectorAll('.shopping-list li');
+
+    console.log(shoppingListElements[2]);
+</script>
+</body>
+</html>
